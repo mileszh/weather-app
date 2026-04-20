@@ -35,6 +35,13 @@ function getCurrentWeather(location) {
     .catch((err) => console.log(err));
 }
 
+function updateUI(location, forecast) {
+  document.getElementById("name").innerText = location.name;
+  document.getElementById("condition").innerText = forecast.description;
+  document.getElementById("temperature").innerHTML =
+    `${forecast.temperature}  &#8451;`;
+}
+
 function weatherCodeToDescription(code) {
   const descriptions = {
     0: "Clear sky",
