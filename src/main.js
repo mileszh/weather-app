@@ -7,5 +7,21 @@ function getWeatherForecast(event) {
   event.preventDefault();
   const city = document.getElementById("city").value.trim();
   document.getElementById("city").value = "";
-  console.log(city);
+  getLocation(city);
+  getCurrentWeather();
 }
+
+function getLocation(city) {
+  fetch(`${GEOCODING_URL}?name=${encodeURIComponent(city)}&count=1`)
+    .then((response) => response.json())
+    .then((data) => {
+      const location = data.results[0];
+    })
+    .catch((err) => {
+      (err) => console.log(err);
+    });
+}
+
+document
+  .getElementById("search")
+  .addEventListener("submit", getweatherForecast);
