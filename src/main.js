@@ -21,7 +21,7 @@ function getLocation(city) {
 }
 
 function getCurrentWeather(location) {
-  const url = `${FORECAST_URL}?latitude=${location.latitude}&longitude=${location.longitude}`;
+  const url = `${FORECAST_URL}?latitude=${location.latitude}&longitude=${location.longitude}&current=temperature_2m,weather_code`;
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
@@ -71,4 +71,4 @@ function weatherCodeToDescription(code) {
 
 document
   .getElementById("search")
-  .addEventListener("submit", getweatherForecast);
+  .addEventListener("submit", getWeatherForecast);
