@@ -8,7 +8,6 @@ function getWeatherForecast(event) {
   const city = document.getElementById("city").value.trim();
   document.getElementById("city").value = "";
   getLocation(city);
-  getCurrentWeather();
 }
 
 function getLocation(city) {
@@ -16,10 +15,9 @@ function getLocation(city) {
     .then((response) => response.json())
     .then((data) => {
       const location = data.results[0];
+      getCurrentWeather(location);
     })
-    .catch((err) => {
-      (err) => console.log(err);
-    });
+    .catch((err) => console.log(err));
 }
 
 function getCurrentWeather(location) {
